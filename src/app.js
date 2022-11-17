@@ -8,8 +8,8 @@ import 'react-datetime-picker/dist/DateTimePicker.css'
 import 'react-clock/dist/Clock.css'
 
 import './app.css'
-import ReadOnlyRow from "./ReadOnlyRow";
-import EditableRow from "./EditableRow";
+import ReadOnlyRow from "./Components/ReadOnlyRow";
+import EditableRow from "./Components/EditableRow";
 
 function formatAppDate(dateTimeString){
 
