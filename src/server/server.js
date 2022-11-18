@@ -6,10 +6,12 @@ import App from "../app";
 const server = express();
 server.use(express.static("dist"));
 
-server.get("/", (req, res) => {
+server.get("/*", (req, res) => {
 
   const initialMarkup = ReactDOMServer.renderToString(
+    <StaticRouter location={req.url}>
       <App />
+    </StaticRouter>
 
   );
 

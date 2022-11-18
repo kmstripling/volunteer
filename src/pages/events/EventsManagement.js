@@ -7,7 +7,7 @@ import 'react-time-picker/dist/TimePicker.css'
 import 'react-datetime-picker/dist/DateTimePicker.css'
 import 'react-clock/dist/Clock.css'
 
-import './app.css'
+import './events.css'
 import ReadOnlyRow from "../../Components/ReadOnlyRow";
 import EditableRow from "../../Components/EditableRow";
 
