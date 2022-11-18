@@ -7,9 +7,9 @@ import 'react-time-picker/dist/TimePicker.css'
 import 'react-datetime-picker/dist/DateTimePicker.css'
 import 'react-clock/dist/Clock.css'
 
-import './app.css'
-import ReadOnlyRow from "./ReadOnlyRow";
-import EditableRow from "./EditableRow";
+import './events.css'
+import ReadOnlyRow from "../../Components/ReadOnlyRow";
+import EditableRow from "../../Components/EditableRow";
 
 function formatAppDate(dateTimeString){
 
@@ -207,7 +207,7 @@ return(
 );
 }
 
-const App = () => {
+const EventsManagement = () => {
 
   const [v_events, setV_events] = useState([]);
 
@@ -242,4 +242,4 @@ const App = () => {
 
 }
 
-export default App;
+export default EventsManagement;

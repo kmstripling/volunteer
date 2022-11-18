@@ -1,2 +1,6 @@
 ./dist/main.js
+<<<<<<< HEAD
 ./node_modules/.cache/*
+=======
+./node_modules/.cache/@babel/register/.babel.7.20.2.development.json
+>>>>>>> restructure
