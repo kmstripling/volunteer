@@ -7,9 +7,9 @@ import 'react-time-picker/dist/TimePicker.css'
 import 'react-datetime-picker/dist/DateTimePicker.css'
 import 'react-clock/dist/Clock.css'
 
-import './events.css'
-import ReadOnlyRow from "../../Components/ReadOnlyRow";
-import EditableRow from "../../Components/EditableRow";
+import '../../assets/global.css'
+import ReadOnlyRow from "./ReadOnlyRow";
+import EditableRow from "./EditableRow";
 
 function formatAppDate(dateTimeString){
 
@@ -126,7 +126,6 @@ const handleEditFormChange = (event) => {
   const fieldName = event.target.getAttribute("name");
   const fieldValue = event.target.value;
 
-  //Write Logic to put update
   const newFormData = { ...editFormData };
   newFormData[fieldName] = fieldValue;
   setEditFormData(newFormData);
