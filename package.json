@@ -33,6 +33,7 @@
     "react-datetime-picker": "^4.1.1",
     "react-datetimepicker": "^2.0.0",
     "react-dom": "^18.2.0",
+    "react-dropdown": "^1.11.0",
     "react-redux": "^8.0.5",
     "react-router": "^6.4.3",
     "react-router-dom": "^6.4.3",

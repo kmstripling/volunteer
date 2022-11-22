@@ -9,6 +9,7 @@ import {
 
 import EventsManagement from "./pages/events/eventsManagement";
 import VolunteersManagement from "./pages/volunteers/volunteersManagement";
+import RegistrationsManagement from "./pages/registrations/registrationsManagement";
 
 const App = () => {
 
@@ -17,11 +18,13 @@ const App = () => {
     <div>
     <nav>
         <Link to="/events"> Event Management </Link><br/>
-        <Link to="/volunteers"> Volunteers Management</Link><br/>
+        <Link to="/volunteers"> Volunteer Management</Link><br/>
+        <Link to="/registrations"> Registration Management</Link><br/>
     </nav>    
      <Routes>
        <Route exact path="/events" element={<EventsManagement />} />   
        <Route exact path="/volunteers" element={<VolunteersManagement />} />   
+       <Route exact path="/registrations" element={<RegistrationsManagement />} />   
      </Routes>
     </div>
   );
