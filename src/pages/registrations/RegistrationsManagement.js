@@ -28,19 +28,19 @@ function formatAppDate(dateTimeString){
 
 const Form = props => {
 
-  const listEvents = props.v_events.map( (v_event) => 
+  const listEvents = props.v_events?.map( (v_event) => 
   {   
     const listEvent = {
       value: v_event.id,
       label: v_event.name + " [" + formatAppDate(v_event.startdatetime) + " - " + formatAppDate(v_event.enddatetime) + "]"
     
-  }
+  } 
   
     return listEvent;
 
-});
+})|| [];
 
-const listVolunteers = props.volunteers.map( (volunteer) => 
+const listVolunteers = props.volunteers?.map( (volunteer) => 
 {   
   const listVolunteer = {
     value: volunteer.id,
@@ -50,15 +50,20 @@ const listVolunteers = props.volunteers.map( (volunteer) =>
 
   return listVolunteer;
 
-});
+}) || [];
 
-  const [selectedEventId, setSelectedEventId] = useState(0);
-  const [selectedVolunteerId, setSelectedVolunteerId] = useState(0);
-  const defaultOption = listEvents[selectedEventId];
-  const defaultVolunteerOption = listVolunteers[selectedVolunteerId];
+  const [selectedEventId, setSelectedEventId] = useState(null);
+  const [selectedVolunteerId, setSelectedVolunteerId] = useState(null);
+  const [defaultEventOption, setDefaultEventOption] = useState(listEvents[selectedEventId]);
+  const [defaultVolunteerOption,setDefaultVolunteerOption] = useState(listVolunteers[selectedVolunteerId]);
 
   const handleOnSelectEvent = (registration) => {
     setSelectedEventId(registration.value);
+    setSelectedVolunteerId(null);
+
+    setDefaultEventOption(listEvents[selectedEventId]);
+    setDefaultVolunteerOption(listVolunteers[selectedVolunteerId]);
+
     props.refreshRegistrations(registration.value);
   };
 
@@ -75,6 +80,9 @@ const listVolunteers = props.volunteers.map( (volunteer) =>
     });
 
     props.refreshRegistrations(selectedEventId);
+
+    setSelectedVolunteerId(null);
+    setDefaultVolunteerOption(listVolunteers[selectedVolunteerId]);
   
   };
 
@@ -83,7 +91,13 @@ const listVolunteers = props.volunteers.map( (volunteer) =>
     await axios.delete(`http://192.168.9.235:3000/registrations/`+ id);
   
     props.refreshRegistrations(selectedEventId);
-   
+
+    //setSelectEventId(null); #Let the Event Stay Selected
+    setSelectedVolunteerId(null);
+
+    setDefaultEventOption(listEvents[selectedEventId]);
+    setDefaultVolunteerOption(listVolunteers[selectedVolunteerId]);
+
   }
 
     return(
@@ -92,7 +106,7 @@ const listVolunteers = props.volunteers.map( (volunteer) =>
       <div>
       <label>
         Event:
-        <Dropdown options={listEvents} onChange={handleOnSelectEvent} value={defaultOption} placeholder="Select an Event" />
+        <Dropdown options={listEvents} onChange={handleOnSelectEvent} value={defaultEventOption} placeholder="Select an Event" />
       </label>
       <table>
     <thead>
@@ -103,13 +117,19 @@ const listVolunteers = props.volunteers.map( (volunteer) =>
         <th>Actions</th>
       </tr>
     </thead>
+
     <tbody>
-      {props.registrations.map((registration) => (
+
+      { props.registrations?.map((registration) => (
         <Fragment>
-          {<ReadOnlyRow registration={registration} handleDeleteButtonClick={handleDeleteButtonClick}/> }
+          {  <ReadOnlyRow registration={registration} handleDeleteButtonClick={handleDeleteButtonClick}/> }
         </Fragment>
-      ))}
+      ) 
+      
+      )}
+
     </tbody>
+
   </table>
   <label>
         Add Volunteer:
@@ -163,11 +183,20 @@ const RegistrationManagement = () => {
 
   } 
 
+  const refreshVolunteers = (event_id) =>{
+
+    (async () => {
+      const result = await axios(`http://192.168.9.235:3000/persons`);
+      set_volunteers(result.data);
+    })();
+
+  } 
+
   return (
     <div>
       <div className="app-header">Registration Management</div>
       <br></br>
-      <Form  v_events={v_events} registrations={registrations} refreshRegistrations={refreshRegistrations} volunteers={volunteers}/>
+      <Form  v_events={v_events} registrations={registrations} refreshRegistrations={refreshRegistrations} volunteers={volunteers} refreshVolunteers={refreshVolunteers}/>
     </div>
   );
 

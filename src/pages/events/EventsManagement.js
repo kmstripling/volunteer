@@ -194,7 +194,7 @@ return(
       </tr>
     </thead>
     <tbody>
-      {props.v_events.map((v_event) => (
+      {props.v_events?.map((v_event) => (
         <Fragment>
           {editContactId === v_event.id ? <EditableRow editFormData={editFormData} handleEditFormChange={handleEditFormChange} handleCancelButtonClick={handleCancelButtonClick} handleStartDateChange={handleStartDateChange} handleEndDateChange={handleEndDateChange}/>: <ReadOnlyRow v_event={v_event} handleEditClick={handleEditClick} handleDeleteButtonClick={handleDeleteButtonClick}/> }
         </Fragment>
