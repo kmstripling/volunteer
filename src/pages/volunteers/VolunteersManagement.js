@@ -140,7 +140,7 @@ return(
       </tr>
     </thead>
     <tbody>
-      {props.volunteers.map((volunteer) => (
+      {props.volunteers?.map((volunteer) => (
         <Fragment>
           {editContactId === volunteer.id ? <EditableRow editFormData={editFormData} handleEditFormChange={handleEditFormChange} handleCancelButtonClick={handleCancelButtonClick} />: <ReadOnlyRow volunteer={volunteer} handleEditClick = {handleEditClick} handleDeleteButtonClick={handleDeleteButtonClick} /> }
         </Fragment>
