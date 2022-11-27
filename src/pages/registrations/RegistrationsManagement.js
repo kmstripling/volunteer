@@ -150,6 +150,7 @@ const RegistrationManagement = () => {
   const [volunteers, set_volunteers] = useState([]);
 
   useEffect(() => {
+    
     (async () => {
       const result = await axios(`http://192.168.9.235:3000/events`);
       setV_events(result.data);
