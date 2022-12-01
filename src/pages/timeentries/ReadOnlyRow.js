@@ -15,45 +15,25 @@ function formatAppDate(dateTimeString){
     )
   }
 
-const ReadOnlyRow = ({ registration, timeentries, handleCheckInButtonClick, handleCheckOutButtonClick }) => {
-
-  const registrationTimeEntries = timeentries?.filter(timeentry => timeentry.volunteer_id === registration.volunteer_id && timeentry.registration_id === registration.id && timeentry.time_out === "0001-01-01T00:00:00Z")
-  const numRows = registrationTimeEntries?.length
-
-  const CheckInButton = props => {
-
-    return (
-    
-      <button type ="button" onClick={(event) => handleCheckInButtonClick(event, registration)}>
-      Check In
-    </button>
-    
-    )
-    
-    };
-
-    const CheckOutButton = props => {
-
-      return (
-      
-        <button type ="button" onClick={(event) => handleCheckOutButtonClick(event, registrationTimeEntries[0])}>
-        Check Out
-      </button>
-      
-      )
-      
-      };
+const ReadOnlyRow = ({ timeentry, handleEditButtonClick, handleDeleteButtonClick }) => {
 
     return (
 
     <Fragment>  
         <tr>
-          <td>{registration.volunteer_firstname}</td>
-          <td>{registration.volunteer_lastname}</td>
-          <td>{formatAppDate(registration.regdatetime)}</td>
+          <td>{timeentry.volunteer_firstname}</td>
+          <td>{timeentry.volunteer_lastname}</td>
+          <td>{formatAppDate(timeentry.regdatetime)}</td>
+          <td>{formatAppDate(timeentry.time_in)}</td>
+          <td>{formatAppDate(timeentry.time_out)}</td>
           <td>
+            <button type ="button" onClick={(event) => handleEditButtonClick(event, timeentry)}>
+                Edit
+                </button>
 
-          { numRows > 0 ?  <CheckOutButton registration={registration}/> : <CheckInButton registration={registration}/>}
+                <button type ="button" onClick={(event) => handleDeleteButtonClick(event, timeentry.id)}>
+                    Delete
+                </button>
 
           </td>
         </tr>

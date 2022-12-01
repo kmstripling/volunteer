@@ -4,7 +4,7 @@ import axios from 'axios';
 import Dropdown from 'react-dropdown';
 
 import '../../assets/global.css'
-import ReadOnlyRow from "./ReadOnlyRow";
+import TimeEntryRow from "./TimeEntryRow";
 
 
 function formatAppDate(dateTimeString){
@@ -94,7 +94,7 @@ const Form = props => {
 
       { props.registrations?.map((registration) => (
 
-          <ReadOnlyRow registration={registration} timeentries={props.timeentries} handleCheckInButtonClick={handleCheckInButtonClick} handleCheckOutButtonClick={handleCheckOutButtonClick}/>
+          <TimeEntryRow registration={registration} timeentries={props.timeentries} handleCheckInButtonClick={handleCheckInButtonClick} handleCheckOutButtonClick={handleCheckOutButtonClick}/>
           
       ) 
       

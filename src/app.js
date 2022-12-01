@@ -7,10 +7,11 @@ import {
   Routes
 } from "react-router-dom"
 
-import EventsManagement from "./pages/events/eventsManagement";
-import VolunteersManagement from "./pages/volunteers/volunteersManagement";
-import RegistrationsManagement from "./pages/registrations/registrationsManagement";
-import TimeEntry from "./pages/timeentries/timeEntry";
+import EventsManagement from "./pages/events/EventsManagement";
+import VolunteersManagement from "./pages/volunteers/VolunteersManagement";
+import RegistrationsManagement from "./pages/registrations/RegistrationsManagement";
+import TimeEntry from "./pages/timeentries/TimeEntry";
+import TimeEntryManagement from "./pages/timeentries/TimeEntryManagement";
 
 const App = () => {
 
@@ -22,12 +23,14 @@ const App = () => {
         <Link to="/volunteers"> Volunteer Management</Link><br/>
         <Link to="/registrations"> Registration Management</Link><br/>
         <Link to="/timeentry"> Time Entry</Link><br/>
+        <Link to="/timeentry/manager"> Time Entry Management</Link><br/>
     </nav>    
      <Routes>
        <Route exact path="/events" element={<EventsManagement />} />   
        <Route exact path="/volunteers" element={<VolunteersManagement />} />   
        <Route exact path="/registrations" element={<RegistrationsManagement />} />
        <Route exact path="/timeentry" element={<TimeEntry />} />
+       <Route exact path="/timeentry/manager" element={<TimeEntryManagement />} />
      </Routes>
     </div>
   );
