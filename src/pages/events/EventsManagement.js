@@ -110,7 +110,7 @@ const handleEditClick = (event, v_event) => {
   console.log(new Date(v_event.enddatetime));
 
   const formValues = {
-    id: v_event.id,
+   id: v_event.id,
    name: v_event.name,
    startdatetime: new Date(v_event.startdatetime),
    enddatetime: new Date(v_event.enddatetime)
@@ -210,9 +210,11 @@ const EventsManagement = () => {
 
   const [v_events, setV_events] = useState([]);
 
+
   useEffect(() => {
     (async () => {
-      const result = await axios(`http://192.168.9.235:3000/events`);
+      const result = await axios(`http://192.168.9.235:3000/events`)
+
       setV_events(result.data);
     })();
   }, []);

@@ -14,4 +14,10 @@ module.exports = {
               },
         ],
   },
+  resolve: {
+    fallback: {
+    "fs": false,
+    "https": false
+    },
+  }
 };
